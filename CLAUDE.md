@@ -55,3 +55,4 @@
 - **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
 - **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
 - **No AI Attribution**: Never add "Co-Authored-By" or any AI/Claude attribution to commit messages.
+- **Use Dedicated Tools**: Prefer Read over cat/head/tail, Glob over find, Grep over grep/rg. Reserve shell commands for cases that genuinely need piping or combining multiple operations.
