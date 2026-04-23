@@ -40,6 +40,7 @@
       "Bash(ls:*)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
+      "Bash(node:*)",
       "Bash(pwd:*)",
       "Bash(rm:*)",
       "Bash(sort:*)",
@@ -47,7 +48,31 @@
       "Bash(tree:*)",
       "Bash(wc:*)",
       "Bash(which:*)",
-      "Bash(xargs:*)"
+      "Bash(xargs:*)",
+      "Edit(C:\\Users\\ahoibakk\\.claude\\**)",
+      "Write(C:\\Users\\ahoibakk\\.claude\\**)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\ahoibakk\\.claude\\plans",
+      "C:\\Users\\ahoibakk\\.claude",
+      "c:\\dev\\TripletexFolioIntegration"
+    ]
+  },
+  "enabledPlugins": {},
+  "effortLevel": "high",
+  "autoUpdatesChannel": "latest",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "bash C:/Users/ahoibakk/.claude/hooks/allow-kill-fremra-dev-server.sh"
+          }
+        ]
+      }
     ]
   }
 }
