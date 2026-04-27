@@ -54,5 +54,6 @@
 - **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
 - **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
 - **No AI Attribution**: Never add "Co-Authored-By" or any AI/Claude attribution to commit messages.
-- **No Python or Node.js**: Only .NET tooling is available. Never suggest or use Python/Node scripts.
+- **Windows Platform**: Development is done on Windows. Use PowerShell-compatible commands when suggesting terminal commands to the user. Don't suggest Unix-only tools (e.g. openssl, sed, awk) without a Windows alternative.
+- **No Python**: Python is not installed. Never suggest or use Python scripts; pick a .NET or Node alternative. Node.js is available.
 - **Use Dedicated Tools**: Prefer Read over cat/head/tail, Glob over find, Grep over grep/rg. Reserve shell commands for cases that genuinely need piping or combining multiple operations.
