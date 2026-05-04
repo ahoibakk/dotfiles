@@ -6,6 +6,7 @@
 - [feedback_no_git_reset.md](feedback_no_git_reset.md) — Never reset/rewrite git history without explicit permission, even for local commits
 - [feedback_no_git_restore.md](feedback_no_git_restore.md) — Never git restore unstaged changes; stash first, ask before discarding
 - [feedback_run_tests_before_commit.md](feedback_run_tests_before_commit.md) — Always run dotnet test before committing, never commit broken tests
+- [feedback_run_full_test_suite.md](feedback_run_full_test_suite.md) — Run the full test suite after a contract change; filtered/unit-only runs miss integration tests posting stale form keys
 - [feedback_plan_detail.md](feedback_plan_detail.md) — Write plans as self-contained documents that work in a new session without conversation history
 - [feedback_skip_design_doc_for_scripts.md](feedback_skip_design_doc_for_scripts.md) — Skip formal design doc for one-shot SQL seed scripts and similar throwaway work
 - [feedback_skip_trivial_tests.md](feedback_skip_trivial_tests.md) — Don't write tests for trivially simple code like webhook notifiers
@@ -28,3 +29,10 @@
 - [feedback_user_secret_naming.md](feedback_user_secret_naming.md) — User secret keys use UPPERCASE_SNAKE_CASE; multi-company apps prefix with Norwegian orgnum (e.g., "919638095:TRIPLETEX_SESSION_TOKEN")
 - [feedback_no_scratch_projects_outside_repo.md](feedback_no_scratch_projects_outside_repo.md) — Never create throwaway projects under /tmp/AppData\Local\Temp; each file op triggers a permission prompt. Use existing test project or skip the check
 - [reference_tmp_scratch_folder.md](reference_tmp_scratch_folder.md) — Use `.tmp/` inside the repo (gitignored) for any throwaway scratch work
+- [feedback_migrations_desync_prod.md](feedback_migrations_desync_prod.md) — Don't auto-apply dev-only migrations to prod DB by running locally before main is deployed; ship dev→main first for destructive migrations
+- [project_dev_db.md](project_dev_db.md) — Local dev hits free-tier `fremra-operations-db-dev` on the same SQL server; prod DB untouched
+- [project_slnx_solution.md](project_slnx_solution.md) — Repo uses `FremraOperations.slnx` (XML solution format), not `.sln`
+- [project_drop_crmactivity_companyname.md](project_drop_crmactivity_companyname.md) — After CrmCompany FK rollout ships to main, drop the legacy CrmActivity.CompanyName column in a follow-up cycle
+- [feedback_no_shell_file_listing.md](feedback_no_shell_file_listing.md) — Never use `ls`/`dir`/`Get-ChildItem`; use Glob for patterns and Read for known paths. Don't spawn agents that will run `ls` either.
+- [feedback_no_redundant_explore_agent.md](feedback_no_redundant_explore_agent.md) — Don't spawn Explore agents to "survey" files that CLAUDE.md already lists; Read them directly
+- [reference_dotfiles_setup.md](reference_dotfiles_setup.md) — `~/.claude` CLAUDE.md/settings.json are hardlinked, hooks/skills/memory are junctions, into `c:/dev/dotfiles`

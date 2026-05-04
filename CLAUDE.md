@@ -56,4 +56,5 @@
 - **No AI Attribution**: Never add "Co-Authored-By" or any AI/Claude attribution to commit messages.
 - **Windows Platform**: Development is done on Windows. Use PowerShell-compatible commands when suggesting terminal commands to the user. Don't suggest Unix-only tools (e.g. openssl, sed, awk) without a Windows alternative.
 - **No Python**: Python is not installed. Never suggest or use Python scripts; pick a .NET or Node alternative. Node.js is available.
-- **Use Dedicated Tools**: Prefer Read over cat/head/tail, Glob over find, Grep over grep/rg. Reserve shell commands for cases that genuinely need piping or combining multiple operations.
+- **Use Dedicated Tools**: Prefer Read over cat/head/tail, Grep over grep/rg. Reserve shell commands for cases that genuinely need piping or combining multiple operations. `find` is allowed.
+- **Be Brief**: Keep responses short and to the point. No preamble, no trailing summaries, no filler.

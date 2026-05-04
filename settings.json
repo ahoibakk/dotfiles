@@ -37,7 +37,6 @@
       "Bash(grep:*)",
       "Bash(head:*)",
       "Bash(jq:*)",
-      "Bash(ls:*)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
       "Bash(node:*)",
@@ -45,22 +44,33 @@
       "Bash(rm:*)",
       "Bash(sort:*)",
       "Bash(tail:*)",
-      "Bash(tree:*)",
       "Bash(wc:*)",
       "Bash(which:*)",
       "Bash(xargs:*)",
-      "Edit(C:\\Users\\ahoibakk\\.claude\\**)",
-      "Write(C:\\Users\\ahoibakk\\.claude\\**)"
+      "Edit(C:/Users/ahoibakk/.claude/**)",
+      "Write(C:/Users/ahoibakk/.claude/**)",
+      "Bash(pulumi stack *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\ahoibakk\\.claude\\plans",
       "C:\\Users\\ahoibakk\\.claude",
       "c:\\dev\\TripletexFolioIntegration"
+    ],
+    "deny": [
+      "Bash(ls:*)",
+      "Bash(dir:*)",
+      "Bash(tree:*)",
+      "Bash(Get-ChildItem:*)",
+      "Bash(gci:*)",
+      "Bash(ls)",
+      "Bash(dir)",
+      "Bash(tree)",
+      "Bash(git -C:*)",
+      "Bash(git --git-dir:*)",
+      "Bash(git --work-tree:*)",
+      "Bash(cd:*)"
     ]
   },
-  "enabledPlugins": {},
-  "effortLevel": "high",
-  "autoUpdatesChannel": "latest",
   "hooks": {
     "PreToolUse": [
       {
@@ -68,11 +78,14 @@
         "hooks": [
           {
             "type": "command",
-            "shell": "bash",
-            "command": "bash C:/Users/ahoibakk/.claude/hooks/allow-kill-fremra-dev-server.sh"
+            "command": "bash C:/Users/ahoibakk/.claude/hooks/allow-kill-fremra-dev-server.sh",
+            "shell": "bash"
           }
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {},
+  "effortLevel": "high",
+  "autoUpdatesChannel": "latest"
 }
