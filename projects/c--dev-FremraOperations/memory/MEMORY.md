@@ -36,3 +36,9 @@
 - [feedback_no_shell_file_listing.md](feedback_no_shell_file_listing.md) — Never use `ls`/`dir`/`Get-ChildItem`; use Glob for patterns and Read for known paths. Don't spawn agents that will run `ls` either.
 - [feedback_no_redundant_explore_agent.md](feedback_no_redundant_explore_agent.md) — Don't spawn Explore agents to "survey" files that CLAUDE.md already lists; Read them directly
 - [reference_dotfiles_setup.md](reference_dotfiles_setup.md) — `~/.claude` CLAUDE.md/settings.json are hardlinked, hooks/skills/memory are junctions, into `c:/dev/dotfiles`
+- [feedback_dedupe_obvious_duplication.md](feedback_dedupe_obvious_duplication.md) — Extract a shared helper as soon as a second live caller appears; don't ship the duplicate and "follow up later"
+- [feedback_flag_inherited_domain_claims.md](feedback_flag_inherited_domain_claims.md) — Treat unverifiable domain claims from plans/docs as assumptions to confirm, not facts to act on
+- [feedback_git_commit_simple_m.md](feedback_git_commit_simple_m.md) — Use `git commit -m "message"` (not heredoc) so commits match the settings.json permission pattern
+- [project_tripletex_api_notes.md](project_tripletex_api_notes.md) — Tripletex `/timesheet/entry` has no approval filter; `TimesheetEntry.locked` is edit-state, not approval
+- [project-details.md](project-details.md) — TripletexCommissionSalary architecture, API auth, Norwegian-specific logic, deployment
+- [reference_sqlcmd.md](reference_sqlcmd.md) — Call bare `sqlcmd` (on PATH) and use `--authentication-method ActiveDirectoryDefault` for Azure SQL queries

@@ -19,21 +19,11 @@ Edits via either path are reflected at the other — hardlinks share the inode, 
 ## Bootstrap on a fresh machine
 
 ```powershell
-# 1. Clone (over an empty .claude or after backing it up)
 git clone https://github.com/ahoibakk/dotfiles C:\dev\dotfiles
-
-# 2. Hardlinks for files (no admin / no Developer Mode required, same volume only)
-Remove-Item -Force "$env:USERPROFILE\.claude\CLAUDE.md","$env:USERPROFILE\.claude\settings.json" -ErrorAction Ignore
-New-Item -ItemType HardLink -Path "$env:USERPROFILE\.claude\CLAUDE.md"     -Target C:\dev\dotfiles\CLAUDE.md     | Out-Null
-New-Item -ItemType HardLink -Path "$env:USERPROFILE\.claude\settings.json" -Target C:\dev\dotfiles\settings.json | Out-Null
-
-# 3. Junctions for directories (no admin required)
-Remove-Item -Recurse -Force "$env:USERPROFILE\.claude\hooks","$env:USERPROFILE\.claude\skills" -ErrorAction Ignore
-cmd /c mklink /J "$env:USERPROFILE\.claude\hooks"  C:\dev\dotfiles\hooks
-cmd /c mklink /J "$env:USERPROFILE\.claude\skills" C:\dev\dotfiles\skills
-New-Item -ItemType Directory -Path "$env:USERPROFILE\.claude\projects\c--dev-FremraOperations" -Force | Out-Null
-cmd /c mklink /J "$env:USERPROFILE\.claude\projects\c--dev-FremraOperations\memory" C:\dev\dotfiles\projects\c--dev-FremraOperations\memory
+C:\dev\dotfiles\bootstrap.ps1
 ```
+
+`bootstrap.ps1` is idempotent: it backs up any pre-existing real files in `~/.claude` to `~/.claude/backups/bootstrap-<timestamp>/` and then installs the hardlinks (files) and junctions (dirs) listed in the topology table. No admin or Developer Mode required (same NTFS volume only).
 
 ## Verifying a link
 
