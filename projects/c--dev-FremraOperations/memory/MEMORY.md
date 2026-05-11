@@ -42,3 +42,11 @@
 - [project_tripletex_api_notes.md](project_tripletex_api_notes.md) — Tripletex `/timesheet/entry` has no approval filter; `TimesheetEntry.locked` is edit-state, not approval
 - [project-details.md](project-details.md) — TripletexCommissionSalary architecture, API auth, Norwegian-specific logic, deployment
 - [reference_sqlcmd.md](reference_sqlcmd.md) — Call bare `sqlcmd` (on PATH) and use `--authentication-method ActiveDirectoryDefault` for Azure SQL queries
+- [feedback_no_cd_prefix.md](feedback_no_cd_prefix.md) — Never prefix bash commands with `cd c:/dev/FremraOperations &&`; CWD is already the project root
+- [feedback_no_redundant_cd_v2.md](feedback_no_redundant_cd_v2.md) — Reinforcement: no `cd` prefix on bash commands; run `git`/`dotnet`/etc directly
+- [feedback_no_dotnet_tool_probe.md](feedback_no_dotnet_tool_probe.md) — Don't run `dotnet tool list` to verify ef/sqlpackage/etc; just call the tool — installs are documented
+- [feedback_no_output_trimming_pipes.md](feedback_no_output_trimming_pipes.md) — Never pipe `dotnet build`/`test` through `Select-Object`/`head`/`tail`; run bare (Bash tool isn't PowerShell)
+- [feedback_razor_compile_on_build.md](feedback_razor_compile_on_build.md) — Don't suggest `RazorCompileOnBuild=false` without also wiring `AddRazorRuntimeCompilation()` — breaks routing
+- [feedback_share_registry_isolated.md](feedback_share_registry_isolated.md) — ShareRegistry and CRM/Activities are separate domains; never mirror/inspire patterns across them
+- [project_activities_paging.md](project_activities_paging.md) — `/Activities` renders all rows client-side; server-side paging + search GET is the eventual next step
+- [reference_no_playwright.md](reference_no_playwright.md) — Playwright is not installed; don't run `playwright-ui-verify` without asking before install
