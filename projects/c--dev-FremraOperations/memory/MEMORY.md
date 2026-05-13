@@ -40,6 +40,7 @@
 - [feedback_flag_inherited_domain_claims.md](feedback_flag_inherited_domain_claims.md) — Treat unverifiable domain claims from plans/docs as assumptions to confirm, not facts to act on
 - [feedback_git_commit_simple_m.md](feedback_git_commit_simple_m.md) — Use `git commit -m "message"` (not heredoc) so commits match the settings.json permission pattern
 - [project_tripletex_api_notes.md](project_tripletex_api_notes.md) — Tripletex `/timesheet/entry` has no approval filter; `TimesheetEntry.locked` is edit-state, not approval
+- [project_tripletex_activity_names.md](project_tripletex_activity_names.md) — `/project/hourlyRates`: `(Alle)` rows have `activity=null`; activity names carry a leading "N " sort prefix
 - [project-details.md](project-details.md) — TripletexCommissionSalary architecture, API auth, Norwegian-specific logic, deployment
 - [reference_sqlcmd.md](reference_sqlcmd.md) — Call bare `sqlcmd` (on PATH) and use `--authentication-method ActiveDirectoryDefault` for Azure SQL queries
 - [feedback_no_dotnet_tool_probe.md](feedback_no_dotnet_tool_probe.md) — Don't run `dotnet tool list` to verify ef/sqlpackage/etc; just call the tool — installs are documented
@@ -47,5 +48,5 @@
 - [feedback_razor_compile_on_build.md](feedback_razor_compile_on_build.md) — Don't suggest `RazorCompileOnBuild=false` without also wiring `AddRazorRuntimeCompilation()` — breaks routing
 - [feedback_share_registry_isolated.md](feedback_share_registry_isolated.md) — ShareRegistry and CRM/Activities are separate domains; never mirror/inspire patterns across them
 - [project_activities_paging.md](project_activities_paging.md) — `/Activities` renders all rows client-side; server-side paging + search GET is the eventual next step
-- [reference_no_playwright.md](reference_no_playwright.md) — Playwright is not installed; don't run `playwright-ui-verify` without asking before install
+- [reference_playwright_e2e.md](reference_playwright_e2e.md) — Playwright e2e suite in `tests/e2e/` for mobile-viewport checks; auth via storageState.json
 - [reference_sqlite_test_db.md](reference_sqlite_test_db.md) — SQLite IS the test DB (TestWebAppFactory); never propose deleting `isSqlite` branches or FillRowVersionInterceptor
