@@ -1,5 +1,6 @@
 # Memory Index
 
+- [feedback_strict_csp_no_inline_handlers.md](feedback_strict_csp_no_inline_handlers.md) — Project CSP blocks inline `on*=` handlers; use `data-*` + nonce'd script blocks (recurring bite)
 - [feedback_autonomous_work.md](feedback_autonomous_work.md) — User expects Claude to handle grunt work (killing processes, restarting apps) autonomously
 - [feedback_verify_dependencies.md](feedback_verify_dependencies.md) — Always verify what references a resource before recommending removal (burned by OIDC deletion breaking CI)
 - [reference_azure_oidc.md](reference_azure_oidc.md) — Active OIDC identity for GitHub Actions deployment (oidc-msi-aa9b)
@@ -32,7 +33,6 @@
 - [feedback_migrations_desync_prod.md](feedback_migrations_desync_prod.md) — Don't auto-apply dev-only migrations to prod DB by running locally before main is deployed; ship dev→main first for destructive migrations
 - [project_dev_db.md](project_dev_db.md) — Local dev hits free-tier `fremra-operations-db-dev` on the same SQL server; prod DB untouched
 - [project_slnx_solution.md](project_slnx_solution.md) — Repo uses `FremraOperations.slnx` (XML solution format), not `.sln`
-- [project_drop_crmactivity_companyname.md](project_drop_crmactivity_companyname.md) — After CrmCompany FK rollout ships to main, drop the legacy CrmActivity.CompanyName column in a follow-up cycle
 - [feedback_no_shell_file_listing.md](feedback_no_shell_file_listing.md) — Never use `ls`/`dir`/`Get-ChildItem`; use Glob for patterns and Read for known paths. Don't spawn agents that will run `ls` either.
 - [feedback_no_redundant_explore_agent.md](feedback_no_redundant_explore_agent.md) — Don't spawn Explore agents to "survey" files that CLAUDE.md already lists; Read them directly
 - [reference_dotfiles_setup.md](reference_dotfiles_setup.md) — `~/.claude` CLAUDE.md/settings.json are hardlinked, hooks/skills/memory are junctions, into `c:/dev/dotfiles`
@@ -48,3 +48,4 @@
 - [feedback_share_registry_isolated.md](feedback_share_registry_isolated.md) — ShareRegistry and CRM/Activities are separate domains; never mirror/inspire patterns across them
 - [project_activities_paging.md](project_activities_paging.md) — `/Activities` renders all rows client-side; server-side paging + search GET is the eventual next step
 - [reference_no_playwright.md](reference_no_playwright.md) — Playwright is not installed; don't run `playwright-ui-verify` without asking before install
+- [reference_sqlite_test_db.md](reference_sqlite_test_db.md) — SQLite IS the test DB (TestWebAppFactory); never propose deleting `isSqlite` branches or FillRowVersionInterceptor
