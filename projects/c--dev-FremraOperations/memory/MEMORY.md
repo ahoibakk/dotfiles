@@ -18,7 +18,7 @@
 - [reference_dev_tools.md](reference_dev_tools.md) — Installed CLI tools (dotnet, az, gh, sqlcmd) and Azure SQL connection details
 - [feedback_sqlcmd_path.md](feedback_sqlcmd_path.md) — Call sqlcmd directly; don't use the full path since it's on PATH
 - [feedback_no_maxlength.md](feedback_no_maxlength.md) — Never add HasMaxLength to EF Core string properties; use nvarchar(max)
-- [feedback_never_run_app.md](feedback_never_run_app.md) — Never start the FremraOperations web app; the user runs it themselves
+- [feedback_run_app_for_tests.md](feedback_run_app_for_tests.md) — Start FremraOperations dev server (.\run.ps1) yourself when Playwright needs it; don't punt to the user
 - [feedback_no_time_estimates.md](feedback_no_time_estimates.md) — Never give time/duration estimates; argue approaches on risk/blast radius/reviewability instead
 - [reference_maestro.md](reference_maestro.md) — Maestro is the accounting software used by Fremra's economics dept; possible future integration target
 - [project_sql_always_on.md](project_sql_always_on.md) — SQL DB auto-pause is intentionally disabled (cold-start exceptions); suggest fixed DTU tier instead for cost cuts
@@ -50,4 +50,5 @@
 - [feedback_share_registry_isolated.md](feedback_share_registry_isolated.md) — ShareRegistry and CRM/Activities are separate domains; never mirror/inspire patterns across them
 - [project_activities_paging.md](project_activities_paging.md) — `/Activities` renders all rows client-side; server-side paging + search GET is the eventual next step
 - [reference_playwright_e2e.md](reference_playwright_e2e.md) — Playwright e2e suite in `tests/e2e/` for mobile-viewport checks; auth via storageState.json
+- [feedback_playwright_npx_prefix.md](feedback_playwright_npx_prefix.md) — Always invoke playwright via `npx --prefix tests/e2e playwright ...`; allowlist needs the `--prefix` form explicitly
 - [reference_sqlite_test_db.md](reference_sqlite_test_db.md) — SQLite IS the test DB (TestWebAppFactory); never propose deleting `isSqlite` branches or FillRowVersionInterceptor
