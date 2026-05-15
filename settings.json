@@ -80,6 +80,11 @@
             "type": "command",
             "command": "bash C:/Users/ahoibakk/.claude/hooks/allow-kill-fremra-dev-server.sh",
             "shell": "bash"
+          },
+          {
+            "type": "command",
+            "command": "bash C:/Users/ahoibakk/.claude/hooks/block-push-from-main.sh",
+            "shell": "bash"
           }
         ]
       }
