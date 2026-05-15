@@ -26,6 +26,7 @@
 - [feedback_no_framework_grep.md](feedback_no_framework_grep.md) — Don't grep `C:\Program Files\dotnet\` or `.nuget\packages\` to resolve API/namespace questions; use known conventions or official docs
 - [feedback_no_over_branching.md](feedback_no_over_branching.md) — Regular commits go to dev; feature/* only for major work; main is production; no PRs ever
 - [feedback_dev_to_main.md](feedback_dev_to_main.md) — "take dev to main" means fast-forward main to dev cleanly — no merge commit, no PR
+- [feedback_no_push_main.md](feedback_no_push_main.md) — Never push main; do the local fast-forward and stop, the user pushes main themselves
 - [feedback_no_python_probing.md](feedback_no_python_probing.md) — Don't probe for Python or suggest paths that depend on it. Node.js IS now installed and available.
 - [feedback_user_secret_naming.md](feedback_user_secret_naming.md) — User secret keys use UPPERCASE_SNAKE_CASE; multi-company apps prefix with Norwegian orgnum (e.g., "919638095:TRIPLETEX_SESSION_TOKEN")
 - [feedback_no_scratch_projects_outside_repo.md](feedback_no_scratch_projects_outside_repo.md) — Never create throwaway projects under /tmp/AppData\Local\Temp; each file op triggers a permission prompt. Use existing test project or skip the check
