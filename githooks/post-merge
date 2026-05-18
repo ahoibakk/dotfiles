@@ -1,0 +1,14 @@
+#!/bin/sh
+# post-merge: re-link ~/.claude after a pull/merge that replaced a bootstrapped
+# hardlink. git rewrites CLAUDE.md / settings.json in place on merge, which
+# breaks the hardlink to ~/.claude — so re-run bootstrap.ps1 when either changed.
+#
+# Enabled per-clone by bootstrap.ps1 via: git config core.hooksPath githooks
+
+changed=$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD 2>/dev/null)
+
+if printf '%s\n' "$changed" | grep -qE '^(CLAUDE\.md|settings\.json)$'; then
+  echo "[post-merge] bootstrapped file changed — re-running bootstrap.ps1"
+  repo=$(git rev-parse --show-toplevel)
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$repo/bootstrap.ps1"
+fi

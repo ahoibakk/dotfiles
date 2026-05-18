@@ -97,6 +97,12 @@ foreach ($target in $plan.Keys) {
   }
 }
 
+# Route git hooks at the tracked githooks/ dir so post-merge re-links automatically.
+if (Test-Path -LiteralPath (Join-Path $RepoRoot 'githooks')) {
+  & git -C $RepoRoot config core.hooksPath githooks
+  Write-Info "git core.hooksPath -> githooks"
+}
+
 Write-Info "Done."
 if (Test-Path -LiteralPath $backupRoot) {
   Write-Info "Pre-existing files were moved to: $backupRoot"
