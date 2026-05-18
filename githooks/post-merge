@@ -9,6 +9,8 @@ changed=$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD 2>/dev/null
 
 if printf '%s\n' "$changed" | grep -qE '^(CLAUDE\.md|settings\.json)$'; then
   echo "[post-merge] bootstrapped file changed — re-running bootstrap.ps1"
-  repo=$(git rev-parse --show-toplevel)
-  powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$repo/bootstrap.ps1"
+  # cygpath -> a real backslash Windows path; pass -RepoRoot so bootstrap.ps1
+  # never has to derive its location from $PSCommandPath (empty when spawned here).
+  repo=$(cygpath -w "$(git rev-parse --show-toplevel)")
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$repo\\bootstrap.ps1" -RepoRoot "$repo"
 fi
