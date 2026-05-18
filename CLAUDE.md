@@ -48,6 +48,37 @@
 
 ---
 
+# Deliverable Format (HTML-first)
+
+Plans and substantial written deliverables go out as a single self-contained HTML file, not a markdown wall. Markdown walls are hard to engage with; HTML keeps the user in the loop.
+
+## When this applies
+Produce an HTML file for: implementation plans, design docs / specs, architecture proposals, explainers, option / competitor comparisons, status updates, research summaries, onboarding docs — anything the user is meant to read, review, and react to.
+
+## When it does NOT apply
+Keep plain markdown for: ordinary chat replies, single-fact answers, short status lines, code edits themselves, commit messages, tool/command output. Don't HTML-ify trivial responses.
+
+## Requirements for the HTML file
+- **Single self-contained file** — all CSS and JS inline, no external/CDN dependencies, no build step. It must open straight from disk.
+- **Mobile-readable** — include `<meta name="viewport">`, responsive layout, a constrained max-width container (~860px), system font stack, generous line-height.
+- **Scannable structure** — clear `<section>`s and headings; color-coded callout boxes (e.g. green = decision/recommended, amber = risk/caution, blue = info, red = blocker).
+- **Diagrams** — inline SVG for data-flow / architecture / sequence where a diagram beats prose.
+- **UI mockups** — whenever the deliverable involves any UI (new pages, screen/layout changes, new components), include a visual mockup of each affected screen rendered in HTML/CSS (or inline SVG) — not a prose description. Show the layout, the key controls, and realistic sample data, and mark which elements are editable vs. derived. A plan that touches the UI without a mockup is incomplete.
+- **Data model / ER diagram** — whenever the deliverable adds or alters database tables, entities, or their relationships, include an ER diagram (inline SVG) showing the new/changed entities, their key columns (PK/FK), and the relationship cardinality. A plan that changes the data model without an ER diagram is incomplete.
+- **Comparisons** — real `<table>`s for option/trade-off comparisons, not bullet lists.
+- **Code** — include the key code snippets the user should review, in styled `<pre><code>` blocks.
+- Add small interactive bits (copy buttons, collapsible sections, sliders) only when they genuinely aid review — don't gold-plate.
+
+## Output location & opening
+- Write the file to `~/.claude/plans/` (`C:\Users\ahoibakk\.claude\plans\`) with a descriptive dated name, e.g. `2026-05-18-feature-x-plan.html`.
+- After writing, open it in the default browser: `Start-Process "<full path>"`.
+- Tell the user the path as a clickable link.
+
+## Interaction with plan mode
+In plan mode the HTML file IS the plan: write it, open it, then call `ExitPlanMode` with a short (3–5 line) markdown summary plus a pointer to the opened HTML file. The HTML carries the detail; the ExitPlanMode card just carries the ask.
+
+---
+
 # Core Principles
 
 - **Simplicity First**: Make every change as simple as possible. Impact minimal code.
