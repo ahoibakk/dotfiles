@@ -66,14 +66,40 @@ Audit thoroughly:
 
 ---
 
-## Agent 3 — Data & EF Core Review (Database Specialist)
+## Agent 3 — Data Model & EF Core Review (Database Specialist)
 
-You are a senior database engineer reviewing Entity Framework Core usage in an ASP.NET Core application.
+You are a senior database engineer reviewing both the **data model design** and **Entity Framework Core usage** in an ASP.NET Core application.
+
+### Data Model Design
+
+Inspect every entity, its configuration (`IEntityTypeConfiguration<T>` / Fluent API / data annotations), and the resulting schema (migrations + `DbContext.OnModelCreating`):
+
+- **Entity-relationship map** — produce a text-based ER diagram of all entities, PKs, FKs, and cardinalities. Flag missing or implicit relationships.
+- **Normalization** — denormalized columns, repeating groups, multi-valued columns (comma-separated strings), or fields that should be lifted into their own table. Conversely, over-normalization where a value object would be clearer.
+- **Column types** — `string` without `MaxLength` (defaults to nvarchar(max)), `decimal` without explicit `precision/scale` (CRITICAL for monetary fields), `DateTime` where `DateOnly`/`DateTimeOffset` would be correct, `int` where `long` is needed, enums stored as strings vs ints (consistency).
+- **Nullability** — required vs optional columns; reference types on non-nullable entities; navigation properties marked nullable correctly for C# nullable-reference-types.
+- **Keys & identity** — surrogate vs natural keys; composite keys where appropriate; GUID vs int identity choice; sequential GUIDs for clustered index friendliness.
+- **Foreign keys & cascade behavior** — every relationship has an explicit FK and an explicit `OnDelete` (Cascade / Restrict / SetNull / NoAction). Flag implicit cascades that could silently delete data.
+- **Indexes** — composite indexes matching common WHERE/ORDER BY/JOIN patterns; covering indexes via `IncludeProperties`; unique constraints where business rules require them; filtered indexes for soft-deleted rows.
+- **Constraints** — CHECK constraints for enum-like text columns, value ranges, mutually-exclusive fields. Database-level uniqueness for business identifiers.
+- **Soft delete / audit columns** — consistent strategy (e.g. `IsDeleted`, `CreatedAt`, `CreatedBy`, `RowVersion`)? Query filters configured so soft-deleted rows don't leak?
+- **Money & precision** — every monetary column uses `decimal(p, s)` with appropriate precision; currency is stored or scoped per-entity; rounding rules are explicit.
+- **Time & timezone** — UTC vs local; consistency across entities; storing both timestamp + timezone where needed.
+- **Naming conventions** — table/column naming consistent (PascalCase vs snake_case); singular vs plural; FK columns suffixed `Id`; junction tables named clearly.
+- **Junction/join tables** — many-to-many handled with skip navigations vs explicit join entities; payload columns on join tables (start/end dates, role, percentage).
+- **Inheritance mapping** — TPH/TPT/TPC chosen deliberately; discriminator column configured.
+- **Owned types / value objects** — appropriately used for `Money`, `Address`, `DateRange`, etc.
+- **Domain integrity** — invariants that *should* be enforced at the schema level but currently live only in application code.
+- **Migrations history** — destructive operations (drop column, narrow type) without a deploy plan; data migrations mixed with schema migrations; long migration chains that should be squashed.
+- **PII / sensitive data** — any column holding PII/secrets without encryption, masking, or access logging.
+
+Output for this section: an ER diagram (text), then findings with **table.column** or **EntityName.Property** plus file:line of the configuration.
+
+### EF Core Runtime & Query Patterns
 
 Review all data access:
 
 - Check DbContext configuration — connection string handling, pooling, lifetime (should be scoped)
-- Review entity configurations — indexes on frequently queried columns, relationships, cascade delete behavior
 - Hunt for N+1 query patterns: missing Include/ThenInclude, lazy loading traps, loops that query
 - Check for unbounded queries — any list endpoint missing Take/pagination?
 - Review migration strategy and any raw SQL migrations
