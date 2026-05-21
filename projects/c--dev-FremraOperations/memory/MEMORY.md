@@ -1,6 +1,8 @@
 # Memory Index
 
+- [feedback_no_norwegian_identifiers.md](feedback_no_norwegian_identifiers.md) — Code identifiers must be English; Norwegian only in user-facing strings/data
 - [feedback_strict_csp_no_inline_handlers.md](feedback_strict_csp_no_inline_handlers.md) — Project CSP blocks inline `on*=` handlers; use `data-*` + nonce'd script blocks (recurring bite)
+- [feedback_razor_codeblock_and_encoding.md](feedback_razor_codeblock_and_encoding.md) — No `@{` inside Razor code blocks; Razor HTML-encodes non-ASCII in `@Model` output (HtmlDecode in tests)
 - [feedback_autonomous_work.md](feedback_autonomous_work.md) — User expects Claude to handle grunt work (killing processes, restarting apps) autonomously
 - [feedback_verify_dependencies.md](feedback_verify_dependencies.md) — Always verify what references a resource before recommending removal (burned by OIDC deletion breaking CI)
 - [reference_azure_oidc.md](reference_azure_oidc.md) — Active OIDC identity for GitHub Actions deployment (oidc-msi-aa9b)
@@ -40,15 +42,23 @@
 - [feedback_dedupe_obvious_duplication.md](feedback_dedupe_obvious_duplication.md) — Extract a shared helper as soon as a second live caller appears; don't ship the duplicate and "follow up later"
 - [feedback_flag_inherited_domain_claims.md](feedback_flag_inherited_domain_claims.md) — Treat unverifiable domain claims from plans/docs as assumptions to confirm, not facts to act on
 - [feedback_git_commit_simple_m.md](feedback_git_commit_simple_m.md) — Use `git commit -m "message"` (not heredoc) so commits match the settings.json permission pattern
+- [feedback_confirm_destructive_db_ops.md](feedback_confirm_destructive_db_ops.md) — Get an explicit go-ahead right before any DROP/DELETE/ef database update, even inside an approved plan
+- [feedback_no_regenerate_applied_migration.md](feedback_no_regenerate_applied_migration.md) — Don't regenerate an EF migration the dev DB already has applied; the new ID mismatch crashes startup
+- [project_ef_execution_strategy.md](project_ef_execution_strategy.md) — AppDbContext has EnableRetryOnFailure; wrap manual BeginTransaction in CreateExecutionStrategy().ExecuteAsync
 - [project_tripletex_api_notes.md](project_tripletex_api_notes.md) — Tripletex `/timesheet/entry` has no approval filter; `TimesheetEntry.locked` is edit-state, not approval
 - [project_tripletex_activity_names.md](project_tripletex_activity_names.md) — `/project/hourlyRates`: `(Alle)` rows have `activity=null`; activity names carry a leading "N " sort prefix
 - [project-details.md](project-details.md) — TripletexCommissionSalary architecture, API auth, Norwegian-specific logic, deployment
 - [reference_sqlcmd.md](reference_sqlcmd.md) — Call bare `sqlcmd` (on PATH) and use `--authentication-method ActiveDirectoryDefault` for Azure SQL queries
 - [feedback_no_dotnet_tool_probe.md](feedback_no_dotnet_tool_probe.md) — Don't run `dotnet tool list` to verify ef/sqlpackage/etc; just call the tool — installs are documented
 - [feedback_no_output_trimming_pipes.md](feedback_no_output_trimming_pipes.md) — Never pipe `dotnet build`/`test` through `Select-Object`/`head`/`tail`; run bare (Bash tool isn't PowerShell)
+- [feedback_no_blanket_kill_dotnet.md](feedback_no_blanket_kill_dotnet.md) — Never `taskkill //IM dotnet.exe`/`testhost.exe`; target the specific PID from the lock message
 - [feedback_razor_compile_on_build.md](feedback_razor_compile_on_build.md) — Don't suggest `RazorCompileOnBuild=false` without also wiring `AddRazorRuntimeCompilation()` — breaks routing
 - [feedback_share_registry_isolated.md](feedback_share_registry_isolated.md) — ShareRegistry and CRM/Activities are separate domains; never mirror/inspire patterns across them
 - [project_activities_paging.md](project_activities_paging.md) — `/Activities` renders all rows client-side; server-side paging + search GET is the eventual next step
 - [reference_playwright_e2e.md](reference_playwright_e2e.md) — Playwright e2e suite in `tests/e2e/` for mobile-viewport checks; auth via storageState.json
 - [feedback_playwright_npx_prefix.md](feedback_playwright_npx_prefix.md) — Always invoke playwright via `npx --prefix tests/e2e playwright ...`; allowlist needs the `--prefix` form explicitly
 - [reference_sqlite_test_db.md](reference_sqlite_test_db.md) — SQLite IS the test DB (TestWebAppFactory); never propose deleting `isSqlite` branches or FillRowVersionInterceptor
+- [project_budget_module.md](project_budget_module.md) — Planned Budget module: bottom-up annual budget authoring, Draft/Approved/Closed lifecycle, 5 new EF tables; see plan HTML
+- [feedback_no_blocking_foreground_polls.md](feedback_no_blocking_foreground_polls.md) — Run poll/wait loops with run_in_background, never as blocking foreground commands; pwsh isn't on the Bash PATH
+- [reference_xlsx_node_sheetjs.md](reference_xlsx_node_sheetjs.md) — Read .xlsx files with Node + SheetJS (`xlsx` npm package), not Python
+- [feedback_no_unprompted_playwright.md](feedback_no_unprompted_playwright.md) — Never run Playwright / browser verification unless the user explicitly asks; stop at build + test

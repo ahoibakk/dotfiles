@@ -33,6 +33,9 @@ if printf '%s\n' "$recent" | grep -F '"name":"Skill"' | grep -qF '"skill":"kill-
   active=1
 elif printf '%s\n' "$recent" | grep -qF '"commandName":"kill-fremra-dev-server"'; then
   active=1
+elif printf '%s\n' "$recent" | grep -F 'kill-fremra-dev-server' | grep -q 'SKILL\.md'; then
+  # Skill loaded by reading SKILL.md directly (Read tool), not via the Skill tool.
+  active=1
 fi
 
 if [ "$active" = "1" ]; then
