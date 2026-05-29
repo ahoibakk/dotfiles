@@ -1,5 +1,6 @@
 # Memory Index
 
+- [feedback_validate_finance_models_numerically.md](feedback_validate_finance_models_numerically.md) — Prove a finance calc is wrong with a concrete numeric example before rewriting; smeared ≠ concentrated effects
 - [feedback_no_norwegian_identifiers.md](feedback_no_norwegian_identifiers.md) — Code identifiers must be English; Norwegian only in user-facing strings/data
 - [feedback_strict_csp_no_inline_handlers.md](feedback_strict_csp_no_inline_handlers.md) — Project CSP blocks inline `on*=` handlers; use `data-*` + nonce'd script blocks (recurring bite)
 - [feedback_razor_codeblock_and_encoding.md](feedback_razor_codeblock_and_encoding.md) — No `@{` inside Razor code blocks; Razor HTML-encodes non-ASCII in `@Model` output (HtmlDecode in tests)
@@ -62,3 +63,4 @@
 - [feedback_no_blocking_foreground_polls.md](feedback_no_blocking_foreground_polls.md) — Run poll/wait loops with run_in_background, never as blocking foreground commands; pwsh isn't on the Bash PATH
 - [reference_xlsx_node_sheetjs.md](reference_xlsx_node_sheetjs.md) — Read .xlsx files with Node + SheetJS (`xlsx` npm package), not Python
 - [feedback_no_unprompted_playwright.md](feedback_no_unprompted_playwright.md) — Never run Playwright / browser verification unless the user explicitly asks; stop at build + test
+- [feedback_msys_path_conv_for_az.md](feedback_msys_path_conv_for_az.md) — Prefix `MSYS_NO_PATHCONV=1` on `az` calls passing `/subscriptions/...` resource IDs from Git Bash
