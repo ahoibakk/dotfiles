@@ -67,3 +67,4 @@
 - [reference_xlsx_node_sheetjs.md](reference_xlsx_node_sheetjs.md) — Read .xlsx files with Node + SheetJS (`xlsx` npm package), not Python
 - [feedback_no_unprompted_playwright.md](feedback_no_unprompted_playwright.md) — Never run Playwright / browser verification unless the user explicitly asks; stop at build + test
 - [feedback_msys_path_conv_for_az.md](feedback_msys_path_conv_for_az.md) — Prefix `MSYS_NO_PATHCONV=1` on `az` calls passing `/subscriptions/...` resource IDs from Git Bash
+- [feedback_bash_tool_is_msys_not_powershell.md](feedback_bash_tool_is_msys_not_powershell.md) — Bash tool runs MSYS bash, not PowerShell (despite the env header); write bash syntax, PS cmdlets like Start-Process fail
