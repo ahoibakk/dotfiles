@@ -1,5 +1,8 @@
 # Memory Index
 
+- [feedback_dev_secrets_from_azure.md](feedback_dev_secrets_from_azure.md) — Missing dev secret? Pull real value via setup-dev-env.sh/Azure, don't generate random (must match prod-encrypted dev rows)
+- [feedback_roslyn_misses_extension_usings.md](feedback_roslyn_misses_extension_usings.md) — CS8019/IDE0005 misses unused usings (extension-method namespaces + local-duplicates-of-global); sweep source text repo-wide
+
 - [feedback_validate_finance_models_numerically.md](feedback_validate_finance_models_numerically.md) — Prove a finance calc is wrong with a concrete numeric example before rewriting; smeared ≠ concentrated effects
 - [feedback_no_norwegian_identifiers.md](feedback_no_norwegian_identifiers.md) — Code identifiers must be English; Norwegian only in user-facing strings/data
 - [feedback_strict_csp_no_inline_handlers.md](feedback_strict_csp_no_inline_handlers.md) — Project CSP blocks inline `on*=` handlers; use `data-*` + nonce'd script blocks (recurring bite)
