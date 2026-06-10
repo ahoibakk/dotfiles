@@ -22,6 +22,7 @@
 - [feedback_no_worktree_refactors.md](feedback_no_worktree_refactors.md) — Don't use worktree agents for interconnected refactors; implement sequentially
 - [project_azure_sql_migration.md](project_azure_sql_migration.md) — Database migrated from SQLite to Azure SQL; don't reference SQLite
 - [reference_dev_tools.md](reference_dev_tools.md) — Installed CLI tools (dotnet, az, gh, sqlcmd) and Azure SQL connection details
+- [reference_dev_db_reseed_az.md](reference_dev_db_reseed_az.md) — Re-seed dev from prod: --use-free-limit is create-only (copy/update can't); export→drop→create free-limit→import
 - [feedback_sqlcmd_path.md](feedback_sqlcmd_path.md) — Call sqlcmd directly; don't use the full path since it's on PATH
 - [feedback_no_maxlength.md](feedback_no_maxlength.md) — Never add HasMaxLength to EF Core string properties; use nvarchar(max)
 - [feedback_run_app_for_tests.md](feedback_run_app_for_tests.md) — Start FremraOperations dev server (.\run.ps1) yourself when Playwright needs it; don't punt to the user
