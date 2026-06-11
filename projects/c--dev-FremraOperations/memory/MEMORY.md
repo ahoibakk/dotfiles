@@ -39,6 +39,7 @@
 - [feedback_no_scratch_projects_outside_repo.md](feedback_no_scratch_projects_outside_repo.md) — Never create throwaway projects under /tmp/AppData\Local\Temp; each file op triggers a permission prompt. Use existing test project or skip the check
 - [reference_tmp_scratch_folder.md](reference_tmp_scratch_folder.md) — Use `.tmp/` inside the repo (gitignored) for any throwaway scratch work
 - [feedback_migrations_desync_prod.md](feedback_migrations_desync_prod.md) — Don't auto-apply dev-only migrations to prod DB by running locally before main is deployed; ship dev→main first for destructive migrations
+- [feedback_ef_migrations_remove_concurrent.md](feedback_ef_migrations_remove_concurrent.md) — `ef migrations remove` deletes the LAST migration (maybe a coworker's untracked WIP); empty migration = tool/runtime version skew, update dotnet-ef instead
 - [project_dev_db.md](project_dev_db.md) — Local dev hits free-tier `fremra-operations-db-dev` on the same SQL server; prod DB untouched
 - [project_slnx_solution.md](project_slnx_solution.md) — Repo uses `FremraOperations.slnx` (XML solution format), not `.sln`
 - [feedback_no_shell_file_listing.md](feedback_no_shell_file_listing.md) — Never use `ls`/`dir`/`Get-ChildItem`; use Glob for patterns and Read for known paths. Don't spawn agents that will run `ls` either.
