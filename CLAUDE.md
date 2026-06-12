@@ -71,7 +71,7 @@ Keep plain markdown for: ordinary chat replies, single-fact answers, short statu
 
 ## Output location & opening
 - Write the file to `~/.claude/plans/` (`C:\Users\ahoibakk\.claude\plans\`) with a descriptive dated name, e.g. `2026-05-18-feature-x-plan.html`.
-- After writing, open it in the default browser: `Start-Process "<full path>"`.
+- After writing, open it in the default browser. The Bash tool runs MSYS bash (not PowerShell), so use `start "" "<full path>"` or `explorer.exe "<full path>"` — a bare `Start-Process` will fail.
 - Tell the user the path as a clickable link.
 
 ## Interaction with plan mode
